@@ -435,6 +435,31 @@ body {
   border: 2px solid white;
 }
 
+/* ═══ CODE TABS ═══ */
+.code-tab {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+.code-tab .tab-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.code-tab .tab-btn:hover { border-color: var(--green); color: var(--text); }
+.code-tab .tab-btn.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
 /* ═══ CODE OUTPUT ═══ */
 .code-section {
   margin-top: 1.5rem;
@@ -937,7 +962,7 @@ function escapeHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-var currentTab = "selfhosted";
+// currentTab already declared above
 function updatePreview() {
   const num = document.getElementById('waNumber').value.trim();
   const name = document.getElementById('bizName').value.trim();
