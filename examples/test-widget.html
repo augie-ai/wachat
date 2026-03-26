@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WAChat Widget Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1 {
+      color: #25D366;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>WAChat Widget Demo</h1>
+  <p>Look at the bottom-right corner for the WhatsApp chat widget!</p>
+
+  <script src="../widget.js"></script>
+  <script>
+    whatsapp_widget({
+      Position: "right",
+      Contact: "919876543210",
+      SiteName: "Demo Business",
+      SiteTag: "Online",
+      WelcomeMessage: "Hi there! 👋 How can we help you today?",
+      WidgetColor: "#25D366",
+      TextColor: "#ffffff",
+      Message: "Hello, I'd like to know more about your services"
+    });
+  </script>
+</body>
+</html>

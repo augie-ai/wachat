@@ -775,6 +775,10 @@ footer {
 
     <!-- CODE OUTPUT -->
     <div class="code-section">
+      <div class="code-tab">
+        <button class="tab-btn" onclick="showTab('selfhosted', this)">Self-Hosted Code</button>
+        <button class="tab-btn active" onclick="showTab('hosted', this)">Hosted Script (Recommended)</button>
+      </div>
       <div class="code-header">
         <h3>Your embed code</h3>
         <button class="copy-btn" onclick="copyCode(this)">
@@ -888,6 +892,16 @@ function toggleSwitch(el) {
   el.classList.toggle('active');
 }
 
+let currentTab = 'hosted'; // Default to hosted
+
+function showTab(tabName, btn) {
+  document.querySelectorAll('.code-tab .tab-btn').forEach(button => button.classList.remove('active'));
+  btn.classList.add('active');
+  currentTab = tabName;
+  updatePreview(); // Re-generate code for the selected tab
+}
+
+
 function setDevice(type, btn) {
   document.querySelectorAll('.preview-device button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -953,32 +967,7 @@ function updatePreview() {
   generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen);
 }
 
-function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen) {
-  const waLink = `https://wa.me/${num}?text=${encodeURIComponent(prefill)}`;
-
-  const code = `<!-- WAChat.in WhatsApp Widget — Free -->
-<div id="wa-chat-widget" style="position:fixed;bottom:20px;right:20px;z-index:9999;font-family:-apple-system,sans-serif">
-  <div id="wa-popup" style="display:${autoOpen?'block':'none'};position:absolute;bottom:70px;right:0;width:320px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);overflow:hidden;animation:waSlideUp .25s ease">
-    <div style="padding:18px 20px;background:${darkColor};color:#fff">
-      <div style="font-weight:600;font-size:16px">${name}</div>
-      <div style="font-size:13px;opacity:.85;margin-top:2px">${tagline}</div>
-    </div>
-    <div style="padding:16px 20px;background:#e5ddd5">
-      <div style="background:#fff;padding:10px 14px;border-radius:0 8px 8px;font-size:14px;max-width:260px;box-shadow:0 1px 2px rgba(0,0,0,.06)">${msg}</div>
-    </div>
-    <div style="padding:12px 16px;background:#fff;border-top:1px solid #eee">
-      <a href="${waLink}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:${color};color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:15px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z"/></svg>
-        ${cta}
-      </a>
-    </div>
-  </div>
-  <div onclick="document.getElementById('wa-popup').style.display=document.getElementById('wa-popup').style.display==='none'?'block':'none'" style="width:56px;height:56px;border-radius:50%;background:${color};display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .2s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z"/></svg>${showBadge ? '\n    <span style="position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#E8593C;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff">1</span>' : ''}
-  </div>
-</div>
-<style>@keyframes waSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}</style>
-<!-- End WAChat.in Widget -->`;
+function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen) {\n  let codeOutputElement = document.getElementById(\'codeOutput\');\n  let code = \'\';\n\n  // Get Position from the select element\n  const position = document.getElementById(\'position\').value;\n\n  if (currentTab === \'hosted\') {\n    // Hosted Script (Recommended)\n    const widgetOptions = {\n      Position: position, // \'left\' or \'right\'\n      Contact: num,\n      SiteName: name,\n      SiteTag: tagline,\n      WelcomeMessage: msg,\n      WidgetColor: color,\n      TextColor: \"#ffffff\",\n      Message: prefill,\n      BrandingText: \"Powered by WAChat\",\n      BrandingUrl: \"https://getwachat.vercel.app\"\n    };\n\n    // Manually format the options string for better readability and comments\n    const optionsString = \`{\n  Position: \"\${widgetOptions.Position}\",        // \"left\" or \"right\"\n  Contact: \"\${widgetOptions.Contact}\",  // WhatsApp number with country code\n  SiteName: \"\${widgetOptions.SiteName}\",  // Business name shown in widget\n  SiteTag: \"\${widgetOptions.SiteTag}\",        // Status tag (Online, Available, etc.)\n  // SiteLogo: \"\",             // Optional logo URL (defaults to WhatsApp icon)\n  WelcomeMessage: \"\${widgetOptions.WelcomeMessage}\",\n  WidgetColor: \"\${widgetOptions.WidgetColor}\",   // Primary color\n  TextColor: \"\${widgetOptions.TextColor}\",     // Text color\n  Message: \"\${widgetOptions.Message}\", // Pre-filled message\n  BrandingText: \"\${widgetOptions.BrandingText}\", // Branding (empty string to hide for Pro users)\n  BrandingUrl: \"\${widgetOptions.BrandingUrl}\"\n}\`;\n\n    code = `<!-- WAChat.in Hosted Widget — Recommended -->\n<script src=\"https://getwachat.vercel.app/widget.js\"></script>\n<script>\nvar widget_options = \${optionsString};\nwhatsapp_widget(widget_options);\n</script>\n<!-- End WAChat.in Hosted Widget -->`;\n\n  } else {\n    // Existing self-hosted code\n    const waLink = `https://wa.me/${num}?text=${encodeURIComponent(prefill)}`;\n\n    code = `<!-- WAChat.in WhatsApp Widget — Free -->\n<div id=\"wa-chat-widget\" style=\"position:fixed;bottom:20px;${position}:20px;z-index:9999;font-family:-apple-system,sans-serif\">\n  <div id=\"wa-popup\" style=\"display:${autoOpen?\'block\':\'none\'};position:absolute;bottom:70px;${position}:0;width:320px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);overflow:hidden;animation:waSlideUp .25s ease\">\n    <div style=\"padding:18px 20px;background:${darkColor};color:#fff\">\n      <div style=\"font-weight:600;font-size:16px\">${name}</div>\n      <div style=\"font-size:13px;opacity:.85;margin-top:2px\">${tagline}</div>\n    </div>\n    <div style=\"padding:16px 20px;background:#e5ddd5\">\n      <div style=\"background:#fff;padding:10px 14px;border-radius:0 8px 8px;font-size:14px;max-width:260px;box-shadow:0 1px 2px rgba(0,0,0,.06)\">${msg}</div>\n    </div>\n    <div style=\"padding:12px 16px;background:#fff;border-top:1px solid #eee\">\n      <a href=\"${waLink}\" target=\"_blank\" rel=\"noopener\" style=\"display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:${color};color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:15px\">\n        <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#fff\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z\"/><path d=\"M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z\"/></svg>\n        ${cta}\n      </a>\n    </div>\n  </div>\n  <div onclick=\"document.getElementById(\'wa-popup\').style.display=document.getElementById(\'wa-popup\').style.display===\'none\'?\'block\':\'none\'\" style=\"width:56px;height:56px;border-radius:50%;background:${color};display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .2s\" onmouseover=\"this.style.transform=\'scale(1.08)\'\" onmouseout=\"this.style.transform=\'scale(1)\'\">\n    <svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"#fff\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z\"/><path d=\"M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z\"/></svg>${showBadge ? \'\\n    <span style=\"position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#E8593C;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff\">1</span>\' : \'\'}\n  </div>\n</div>\n<style>@keyframes waSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}</style>\n<!-- End WAChat.in Widget -->`;
 
   const highlighted = escapeHtml(code)
     .replace(/(&lt;\/?[a-z][^&]*?&gt;)/gi, '<span class="tag">$1</span>')
@@ -1000,7 +989,16 @@ function copyCode(btn) {
 }
 
 // Initialize
-updatePreview();
+// updatePreview(); // Remove this line
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Set "Hosted Script (Recommended)" as the default active tab
+  const hostedTabButton = document.querySelector('.code-tab button:last-child');
+  if (hostedTabButton) {
+    showTab('hosted', hostedTabButton);
+  }
+  updatePreview();
+});
 </script>
 </body>
 </html>
