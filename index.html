@@ -771,7 +771,7 @@ footer {
 
         <!-- Widget preview -->
         <div id="widgetPreview" style="position:relative">
-          <div class="wa-popup hidden" id="popupPreview">
+          <div class="wa-popup" id="popupPreview">
             <div class="wa-popup-header" id="popupHeader" style="background:#075E54">
               <div class="biz-name" id="popupName">PowerPulse Gym</div>
               <div class="biz-tagline" id="popupTagline">Typically replies within minutes</div>
@@ -986,8 +986,8 @@ function updatePreview() {
   document.getElementById('fakeLogo').textContent = name;
   document.getElementById('badgePreview').style.display = showBadge ? 'flex' : 'none';
 
-  if (autoOpen) document.getElementById('popupPreview').classList.remove('hidden');
-  else document.getElementById('popupPreview').classList.add('hidden');
+  // Always show popup in preview so user can see changes in real-time
+  document.getElementById('popupPreview').classList.remove('hidden');
 
   // Generate code
   generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen);
