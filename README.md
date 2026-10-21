@@ -1,33 +1,26 @@
-# WAChat — Free WhatsApp Widget Generator
+# WAChat: a free tool by Waani
 
-🇮🇳 Built for Indian businesses. Zero dependencies. No watermark. Self-hosted code.
+Free, ungated WhatsApp widget generator at https://getwachat.vercel.app/.
 
-## Features
+- Standalone HTML/CSS with a small inline click handler; no external script.
+- Optional hosted widget.js; a different popup layout and a WAChat hosting dependency.
+- No branding in either generated mode. Optional installation/enquiry help links to Waani.
+- No paid plans, account system or analytics backend. Referral links carry campaign tags; they do not establish conversion tracking.
+- One widget per page. The widget opens WhatsApp; it is not a chatbot, shared inbox or API troubleshooting tool.
 
-- 🎨 Fully customizable WhatsApp chat widgets
-- 📱 Mobile-responsive design
-- 🚀 Zero external dependencies — pure HTML/CSS/JS
-- 🔒 Self-hosted embed code (no third-party scripts)
-- 💚 No "Powered by" watermark on any tier
-- ⚡ Instant generation — no signup required
+## Use
 
-## How It Works
+Enter your business WhatsApp number with country code, digits only (7–15 digits, no + or spaces). This checks format, not account existence. Customize, copy, and paste before the closing body tag. Test on your own site with a consenting recipient. Site CSP or HTML sanitizers may block inline scripts/handlers.
 
-1. Enter your WhatsApp number
-2. Customize the widget (colors, position, message, style)
-3. Copy the embed code
-4. Paste it into your website
+## Development and checks
 
-## Live Demo
+No dependencies or build step.
 
-Visit [wachat.vercel.app](https://wachat.vercel.app)
+```sh
+node test-widget.cjs
+python3 -m http.server 8000
+```
 
-## Tech Stack
-
-- Pure HTML/CSS/JS
-- No frameworks, no build step
-- Static hosting (Vercel)
-
-## License
+Regression checks cover quoted/Unicode/multiline inputs, script-closing payloads, HTML escaping, number validation and the optional help CTA. Browser-check both modes, mobile layouts and clipboard behavior before deployment.
 
 MIT
