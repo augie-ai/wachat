@@ -4,7 +4,7 @@ Free, ungated WhatsApp widget generator at https://tools.getwaani.com/.
 
 - Standalone HTML/CSS with a small inline click handler; no external script.
 - Optional hosted widget.js; a different popup layout and a WAChat hosting dependency.
-- No branding in either generated mode. Optional installation/enquiry help links to Waani.
+- A small "Powered by WAChat" link to tools.getwaani.com is on by default in both modes; users can switch it off. Optional installation/enquiry help links to Waani.
 - No paid plans, account system or analytics backend. Referral links carry campaign tags; they do not establish conversion tracking.
 - One widget per page. The widget opens WhatsApp; it is not a chatbot, shared inbox or API troubleshooting tool.
 

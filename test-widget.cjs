@@ -2,7 +2,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const html = fs.readFileSync('index.html', 'utf8');
+const html = fs.readFileSync('index.html', 'utf8').replace(/\r\n/g, '\n');
 const source = html.slice(html.indexOf('<script>\nfunction toggleSwitch') + 8, html.lastIndexOf('</script>'));
 const elements = {};
 const context = {window: {}, document: {
@@ -28,6 +28,13 @@ assert(!standalone.includes('<img'));
 assert(standalone.includes('&lt;img'));
 assert(standalone.includes('left:20px'));
 assert(standalone.includes('<button type="button"'));
+assert(!standalone.includes('Powered by WAChat'));
+vm.runInContext(`currentTab='hosted'; generateCode('919876543210','a','b','c','d','e','#25d366','#075e54',true,false,true)`, context);
+vm.runInNewContext(context.window._generatedCode.match(/<script>([\s\S]*?)<\/script>/)[1], {whatsapp_widget: o => options = o});
+assert.equal(options.BrandingText, 'Powered by WAChat');
+assert.equal(options.BrandingUrl, 'https://tools.getwaani.com/');
+vm.runInContext(`currentTab='selfhosted'; generateCode('919876543210','a','b','c','d','e','#25d366','#075e54',true,false,true)`, context);
+assert(context.window._generatedCode.includes('<a href="https://tools.getwaani.com/" target="_blank" rel="noopener" style="color:#8A8983;text-decoration:none">Powered by WAChat</a>'));
 for (const number of ['', '+919876543210', '123', '01234567', '1234567890123456', '91 9876543210']) {
   context.number = number;
   vm.runInContext(`generateCode(number,'','','','','','#25d366','#075e54',false,false)`, context);

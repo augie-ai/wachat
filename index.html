@@ -14,7 +14,7 @@
 <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2892900713777311" crossorigin="anonymous"></script> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Create a free WhatsApp chat button for your website. No signup or watermark. Choose standalone or hosted code, with HTML and WordPress installation guides.">
+<meta name="description" content="Create a free WhatsApp chat button for your website. No signup; the small credit link is optional. Choose standalone or hosted code, with HTML and WordPress installation guides.">
 <meta name="author" content="Waani">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tools.getwaani.com/">
@@ -22,7 +22,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Free WhatsApp Widget Generator & Website Chat Button | WAChat by Waani">
-<meta property="og:description" content="Create a free WhatsApp chat button for your website. No signup or watermark. Choose standalone or hosted code, with HTML and WordPress installation guides.">
+<meta property="og:description" content="Create a free WhatsApp chat button for your website. No signup; the small credit link is optional. Choose standalone or hosted code, with HTML and WordPress installation guides.">
 <meta property="og:url" content="https://tools.getwaani.com/">
 <meta property="og:site_name" content="WAChat by Waani">
 <meta property="og:locale" content="en_IN">
@@ -30,7 +30,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WAChat by Waani — Free WhatsApp Widget Generator">
-<meta name="twitter:description" content="Create a free WhatsApp chat button for your website. No signup or watermark. Choose standalone or hosted code, with HTML and WordPress installation guides.">
+<meta name="twitter:description" content="Create a free WhatsApp chat button for your website. No signup; the small credit link is optional. Choose standalone or hosted code, with HTML and WordPress installation guides.">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -591,7 +591,7 @@ footer {
 <section class="hero">
   <div class="hero-badge"><span class="dot"></span> WAChat · A free tool by Waani · No signup</div>
   <h1>Free WhatsApp widget generator<br>for your <em>website</em></h1>
-  <p>Add a WhatsApp contact button to your website. Free, with no signup or watermark. Choose standalone code or a script hosted by WAChat. Visitors send their message in WhatsApp; this is not a chatbot or shared inbox.</p>
+  <p>Add a WhatsApp contact button to your website. Free, with no signup. A small &ldquo;Powered by WAChat&rdquo; link is optional. Choose standalone code or a script hosted by WAChat. Visitors send their message in WhatsApp; this is not a chatbot or shared inbox.</p>
 </section>
 
 <!-- BUILDER -->
@@ -663,6 +663,11 @@ footer {
       <button type="button" aria-label="Show chat popup on load" aria-pressed="false" class="toggle" id="toggleAutoOpen" onclick="toggleSwitch(this); updatePreview()"></button>
     </div>
 
+    <div class="toggle-row">
+      <span>Show &ldquo;Powered by WAChat&rdquo; link</span>
+      <button type="button" aria-label="Show Powered by WAChat link" aria-pressed="true" class="toggle active" id="toggleBranding" onclick="toggleSwitch(this); updatePreview()"></button>
+    </div>
+
   </div>
 
   <!-- PREVIEW -->
@@ -711,6 +716,7 @@ footer {
                 <span id="popupCtaText">Start chat</span>
               </button>
             </div>
+            <div id="brandingPreview" style="padding:6px;text-align:center;font-size:11px;background:#fff;border-top:1px solid #eee"><a href="https://tools.getwaani.com/" target="_blank" rel="noopener" style="color:#8A8983;text-decoration:none">Powered by WAChat</a></div>
           </div>
           <button type="button" aria-label="Toggle preview" class="wa-fab" id="fabPreview" style="background:#25D366" onclick="document.getElementById('popupPreview').classList.toggle('hidden')">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z"/></svg>
@@ -755,7 +761,7 @@ footer {
   <ol><li>Enter your public business number with its country code, using digits only.</li><li>Choose your text, colour and position. Generate standalone code or the hosted script.</li><li>Install one copy on your page and test the destination number on desktop and mobile.</li></ol>
   <p><a href="/guides/whatsapp-button-html.html">HTML website: working code and installation checks</a> · <a href="/guides/whatsapp-button-wordpress.html">WordPress: add a button without a chat plugin</a></p>
   <h3>Does this need the WhatsApp Business API?</h3><p>No. This click-to-chat widget opens WhatsApp; it does not send API messages. Use an active WhatsApp number you control.</p>
-  <h3>Is it free without a watermark?</h3><p>Both generated modes are free and unbranded. No account is needed. Optional Waani help is separate.</p>
+  <h3>Can I remove the &ldquo;Powered by WAChat&rdquo; link?</h3><p>Yes. Both modes are free and need no account. The small credit link is on by default; switch it off before copying your code. Optional Waani help is separate.</p>
   <h3>Which code should I choose?</h3><p>Standalone code makes no WAChat script request. Hosted mode loads our script and uses a different popup layout. Your editor must permit the code, and your site's security policy must allow its scripts or handlers. If not, a plain WhatsApp link is the simplest fallback.</p>
 </section>
 <!-- FEATURES -->
@@ -780,8 +786,8 @@ footer {
     </div>
     <div class="feature-card">
       <div class="feature-icon" style="background:#FCE4EC;color:#C62828">🔒</div>
-      <h4>No watermark (free)</h4>
-      <p>Both generated embed modes are free of branding. Waani help is optional and separate from the widget.</p>
+      <h4>Credit link optional</h4>
+      <p>Free in both modes. Keep the small &ldquo;Powered by WAChat&rdquo; link to support the tool, or switch it off.</p>
     </div>
   </div>
 </section>
@@ -853,6 +859,7 @@ function updatePreview() {
   const darkColor = getDarkerColor(color);
   const showBadge = document.getElementById('toggleBadge').classList.contains('active');
   const autoOpen = document.getElementById('toggleAutoOpen').classList.contains('active');
+  const showBranding = document.getElementById('toggleBranding').classList.contains('active');
 
   // Update preview
   try {
@@ -865,6 +872,7 @@ function updatePreview() {
     document.getElementById('popupCtaText').textContent = cta;
     document.getElementById('fakeLogo').textContent = name;
     document.getElementById('badgePreview').style.display = showBadge ? 'flex' : 'none';
+    document.getElementById('brandingPreview').style.display = showBranding ? 'block' : 'none';
   } catch(e) { console.warn('Preview update error:', e); }
 
   // Always show popup in preview so user can see changes in real-time
@@ -875,10 +883,10 @@ function updatePreview() {
   document.getElementById('popupPreview').style.left = left ? '0' : 'auto';
   document.getElementById('popupPreview').style.right = left ? 'auto' : '0';
   // Generate code
-  generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen);
+  generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen, showBranding);
 }
 
-function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen) {
+function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen, showBranding) {
   var code = '';
   var position = document.getElementById('position') ? document.getElementById('position').value : 'right';
 
@@ -892,7 +900,7 @@ function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, s
   const options = JSON.stringify({Position: position, Contact: num, SiteName: name,
     SiteTag: tagline, WelcomeMessage: msg, WidgetColor: color, TextColor: '#ffffff',
     Message: prefill, CtaText: cta, AutoOpen: autoOpen, ShowBadge: showBadge,
-    BrandingText: ''}).replace(/</g, '\\u003c');
+    BrandingText: showBranding ? 'Powered by WAChat' : '', BrandingUrl: 'https://tools.getwaani.com/'}).replace(/</g, '\\u003c');
   var hostedCode = '<!-- WAChat Hosted Widget -->\n'
     + '<script src="https://tools.getwaani.com/widget.js"><\/script>\n'
     + '<script>whatsapp_widget(' + options + ');<\/script>';
@@ -920,6 +928,7 @@ function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, s
     + '        ' + cta + '\n'
     + '      </a>\n'
     + '    </div>\n'
+    + (showBranding ? '    <div style="padding:6px;text-align:center;font-size:11px;background:#fff"><a href="https://tools.getwaani.com/" target="_blank" rel="noopener" style="color:#8A8983;text-decoration:none">Powered by WAChat</a></div>\n' : '')
     + '  </div>\n'
     + '  <button type="button" aria-label="Toggle WhatsApp chat" onclick="var p=document.getElementById(\'wa-popup\');p.style.display=p.style.display===\'none\'?\'block\':\'none\'" style="width:56px;height:56px;border-radius:50%;background:' + color + ';display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .2s;position:relative" onmouseover="this.style.transform=\'scale(1.08)\'" onmouseout="this.style.transform=\'scale(1)\'">\n'
     + '    ' + svgIconLg + badge + '\n'
