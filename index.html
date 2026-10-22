@@ -13,7 +13,6 @@
 
 <!-- Google AdSense - uncomment after approval -->
 <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2892900713777311" crossorigin="anonymous"></script> -->
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Free WhatsApp Widget Generator for Indian Businesses. Create beautiful, self-hosted WhatsApp chat buttons for your website in 60 seconds. No signup, no watermark, zero dependencies.">
@@ -42,7 +41,7 @@
   "@type": "WebApplication",
   "name": "WAChat",
   "description": "Free WhatsApp Widget Generator for Indian Businesses",
-  "url": "https://wachat.in/",
+  "url": "https://getwachat.vercel.app/",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "offers": {
@@ -52,7 +51,7 @@
   }
 }
 </script>
-<title>WAChat.in — Free WhatsApp Widget Generator for Indian Businesses</title>
+<title>WAChat — Free WhatsApp Widget Generator for Indian Businesses</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -344,7 +343,7 @@ body {
   position: absolute;
   bottom: 72px;
   right: 0;
-  width: 320px;
+  width: min(320px, calc(100vw - 112px));
   background: white;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
@@ -573,78 +572,6 @@ body {
 .feature-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem }
 .feature-card p { font-size: 0.82rem; color: var(--text2); line-height: 1.5 }
 
-/* ═══ PRICING ═══ */
-.pricing {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
-}
-.pricing h2 {
-  font-family: var(--serif);
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.25rem;
-}
-.price-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  position: relative;
-}
-.price-card.featured {
-  border: 2px solid var(--green);
-  box-shadow: 0 8px 32px rgba(37,211,102,0.1);
-}
-.price-card .popular {
-  position: absolute;
-  top: -10px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--green);
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 3px 14px;
-  border-radius: 100px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.price-card .tier { font-size: 0.85rem; font-weight: 600; color: var(--text2); margin-bottom: 0.5rem }
-.price-card .amount { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 0.25rem }
-.price-card .amount span { font-size: 1rem; color: var(--text3) }
-.price-card .desc { font-size: 0.82rem; color: var(--text3); margin-bottom: 1.25rem }
-.price-card ul { list-style: none; margin-bottom: 1.5rem }
-.price-card li {
-  font-size: 0.85rem;
-  padding: 6px 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-.price-card li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0 }
-.price-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  border-radius: 8px;
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-.price-btn-primary { background: var(--green); color: white; border: none }
-.price-btn-primary:hover { background: var(--green-dark) }
-.price-btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border) }
-.price-btn-outline:hover { background: var(--bg) }
-
 /* ═══ FOOTER ═══ */
 footer {
   text-align: center;
@@ -656,64 +583,52 @@ footer {
 
 .hidden { display: none !important }
 
-/* ═══ PREMIUM BADGE ═══ */
-.pro-badge {
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: linear-gradient(135deg, #F59E0B, #EF4444);
-  color: white;
-  margin-left: 6px;
-  vertical-align: middle;
-  letter-spacing: 0.05em;
-}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> 100% Free — No signup required</div>
+  <div class="hero-badge"><span class="dot"></span> WAChat · A free tool by Waani · No signup</div>
   <h1>WhatsApp widget for<br>your <em>Indian</em> business</h1>
-  <p>Generate a beautiful, fast-loading WhatsApp chat widget in 60 seconds. Self-hosted code — no external dependencies, no branding watermark.</p>
+  <p>Add a WhatsApp contact button to your website. Free, with no signup or watermark. Choose standalone code or a script hosted by WAChat. Visitors send their message in WhatsApp; this is not a chatbot or shared inbox.</p>
 </section>
 
 <!-- BUILDER -->
-<section class="builder">
+<section class="builder" id="builder">
   <div class="config-panel">
     <h2>Build your widget</h2>
     <p class="subtitle">Customize everything. Preview live on the right.</p>
 
     <div class="form-group">
-      <label>WhatsApp number (with country code)</label>
-      <input type="text" id="waNumber" value="919876543210" placeholder="e.g. 919876543210" oninput="updatePreview()">
+      <label for="waNumber">WhatsApp number (with country code)</label>
+      <input type="text" id="waNumber" inputmode="numeric" required pattern="[1-9][0-9]{6,14}" aria-describedby="numberHelp" value="" placeholder="Country code + number, digits only" oninput="updatePreview()">
+      <small id="numberHelp">Use your own WhatsApp number: country code and digits only, no +, spaces or brackets. Format validation does not verify an active account.</small>
     </div>
 
     <div class="row">
       <div class="form-group">
-        <label>Business name</label>
+        <label for="bizName">Business name</label>
         <input type="text" id="bizName" value="PowerPulse Gym" oninput="updatePreview()">
       </div>
       <div class="form-group">
-        <label>Tagline</label>
+        <label for="bizTagline">Tagline</label>
         <input type="text" id="bizTagline" value="Typically replies within minutes" oninput="updatePreview()">
       </div>
     </div>
 
     <div class="form-group">
-      <label>Welcome message</label>
+      <label for="welcomeMsg">Welcome message</label>
       <textarea id="welcomeMsg" oninput="updatePreview()">Hey there! 💪 Welcome to PowerPulse Gym. How can we help you today?</textarea>
     </div>
 
     <div class="form-group">
-      <label>Pre-filled message (sent by visitor)</label>
+      <label for="prefillMsg">Pre-filled message (sent by visitor)</label>
       <input type="text" id="prefillMsg" value="Hi! I'd like to know about your gym membership plans." oninput="updatePreview()">
     </div>
 
     <div class="form-group">
-      <label>CTA button text</label>
+      <label for="ctaText">CTA button text</label>
       <input type="text" id="ctaText" value="Start chat" oninput="updatePreview()">
     </div>
 
@@ -721,16 +636,16 @@ footer {
 
     <div class="row">
       <div class="form-group">
-        <label>Brand color</label>
+        <label for="brandColor">Brand color</label>
         <div class="color-row">
           <div class="color-swatch" id="colorPreview" style="background:#25D366">
             <input type="color" id="brandColor" value="#25D366" oninput="updateColor(this.value)">
           </div>
-          <input type="text" id="brandColorText" value="#25D366" style="flex:1" oninput="updateColorFromText(this.value)">
+          <input type="text" aria-label="Brand color hex code" id="brandColorText" value="#25D366" style="flex:1" oninput="updateColorFromText(this.value)">
         </div>
       </div>
       <div class="form-group">
-        <label>Position</label>
+        <label for="position">Position</label>
         <select id="position" onchange="updatePreview()">
           <option value="right">Bottom right</option>
           <option value="left">Bottom left</option>
@@ -740,29 +655,14 @@ footer {
 
     <div class="toggle-row">
       <span>Show notification badge</span>
-      <div class="toggle active" id="toggleBadge" onclick="toggleSwitch(this); updatePreview()"></div>
+      <button type="button" aria-label="Show notification badge" aria-pressed="true" class="toggle active" id="toggleBadge" onclick="toggleSwitch(this); updatePreview()"></button>
     </div>
 
     <div class="toggle-row">
       <span>Show chat popup on load</span>
-      <div class="toggle" id="toggleAutoOpen" onclick="toggleSwitch(this); updatePreview()"></div>
+      <button type="button" aria-label="Show chat popup on load" aria-pressed="false" class="toggle" id="toggleAutoOpen" onclick="toggleSwitch(this); updatePreview()"></button>
     </div>
 
-    <div class="toggle-row">
-      <span>Show tooltip on hover</span>
-      <div class="toggle active" id="toggleTooltip" onclick="toggleSwitch(this); updatePreview()"></div>
-    </div>
-
-    <hr class="section-divider">
-
-    <div class="form-group">
-      <label>Widget style</label>
-      <select id="widgetStyle" onchange="updatePreview()">
-        <option value="fab">Floating button (FAB)</option>
-        <option value="bar">Bottom bar</option>
-        <option value="pill">Pill with text</option>
-      </select>
-    </div>
   </div>
 
   <!-- PREVIEW -->
@@ -797,7 +697,7 @@ footer {
             <div class="wa-popup-header" id="popupHeader" style="background:#075E54">
               <div class="biz-name" id="popupName">PowerPulse Gym</div>
               <div class="biz-tagline" id="popupTagline">Typically replies within minutes</div>
-              <button class="close-btn" onclick="document.getElementById('popupPreview').classList.add('hidden')">✕</button>
+              <button aria-label="Close preview" class="close-btn" onclick="document.getElementById('popupPreview').classList.add('hidden')">✕</button>
             </div>
             <div class="wa-popup-body">
               <div class="wa-message">
@@ -806,16 +706,16 @@ footer {
               </div>
             </div>
             <div class="wa-popup-footer">
-              <button class="wa-cta-btn" id="popupCta" style="background:#25D366">
+              <button type="button" title="Preview only; test the generated code on your site" class="wa-cta-btn" id="popupCta" style="background:#25D366">
                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z"/></svg>
                 <span id="popupCtaText">Start chat</span>
               </button>
             </div>
           </div>
-          <div class="wa-fab" id="fabPreview" style="background:#25D366" onclick="document.getElementById('popupPreview').classList.toggle('hidden')">
+          <button type="button" aria-label="Toggle preview" class="wa-fab" id="fabPreview" style="background:#25D366" onclick="document.getElementById('popupPreview').classList.toggle('hidden')">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z"/></svg>
             <span class="wa-badge" id="badgePreview">1</span>
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -823,8 +723,8 @@ footer {
     <!-- CODE OUTPUT -->
     <div class="code-section" id="codeSection" style="display:none">
       <div class="code-tab">
-        <button class="tab-btn" onclick="showTab('selfhosted', this)">Self-Hosted Code</button>
-        <button class="tab-btn active" onclick="showTab('hosted', this)">Hosted Script (Recommended)</button>
+        <button class="tab-btn" onclick="showTab('selfhosted', this)">Standalone Code (Recommended)</button>
+        <button class="tab-btn active" onclick="showTab('hosted', this)">Hosted Script</button>
       </div>
       <div class="code-header">
         <h3>Your embed code</h3>
@@ -836,6 +736,11 @@ footer {
       <div class="code-box">
         <pre id="codeOutput"></pre>
       </div>
+      <p id="copyStatus" role="status"></p>
+      <p>Paste the code before your site's closing &lt;/body&gt; tag. Use one widget per page and test it on your website.</p>
+      <p>Standalone mode is self-contained; hosted mode depends on WAChat's script and has a different popup layout.</p>
+      <p>Need help installing this or managing the enquiries?
+        <a href="https://getwaani.com/?utm_source=wachat&amp;utm_medium=referral&amp;utm_campaign=free_widget&amp;utm_content=installation_help">Talk to the Waani team</a>. Optional help; no signup is needed to copy your code.</p>
     </div>
     <button class="get-code-btn" id="getCodeBtn" onclick="document.getElementById('codeSection').style.display='block';this.style.display='none';updatePreview();">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -846,18 +751,18 @@ footer {
 
 <!-- FEATURES -->
 <section class="features" id="features">
-  <h2>Why WAChat.in?</h2>
-  <p class="tagline">Built for Indian businesses. No compromises.</p>
+  <h2>Why WAChat?</h2>
+  <p class="tagline">A simple way for website visitors to start a WhatsApp conversation.</p>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon" style="background:#E8F5E9;color:var(--green)">⚡</div>
-      <h4>Zero dependencies</h4>
-      <p>Pure HTML/CSS/JS. No external scripts, no CDN calls. Your widget loads in under 50ms.</p>
+      <h4>No framework required</h4>
+      <p>Standalone code uses no external scripts. Hosted mode loads widget.js from WAChat. Neither mode needs a framework.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon" style="background:#FFF3E0;color:#E65100">🇮🇳</div>
       <h4>India-first design</h4>
-      <p>Pre-built templates for gyms, restaurants, salons, coaching centers, clinics, and more.</p>
+      <p>Customize the business name and welcome message for your gym, salon, coaching centre or other business.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon" style="background:#E3F2FD;color:#1565C0">📱</div>
@@ -867,83 +772,23 @@ footer {
     <div class="feature-card">
       <div class="feature-icon" style="background:#FCE4EC;color:#C62828">🔒</div>
       <h4>No watermark (free)</h4>
-      <p>Unlike Elfsight, our basic widget has zero branding. Your brand, your widget.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#F3E5F5;color:#6A1B9A">📊</div>
-      <h4>Click analytics <span class="pro-badge">PRO</span></h4>
-      <p>Track how many visitors click your widget, which pages convert best.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#E0F2F1;color:#00695C">👥</div>
-      <h4>Multi-agent <span class="pro-badge">PRO</span></h4>
-      <p>Route visitors to Sales, Support, or Trainer based on their selection.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <h2>Simple, honest pricing</h2>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="tier">Free forever</div>
-      <div class="amount">₹0</div>
-      <div class="desc">For personal sites & small businesses</div>
-      <ul>
-        <li>Unlimited widgets</li>
-        <li>Unlimited page views</li>
-        <li>No branding watermark</li>
-        <li>Self-hosted code</li>
-        <li>Chat popup with welcome message</li>
-        <li>Mobile-responsive</li>
-      </ul>
-      <a class="price-btn price-btn-outline" href="#builder">Generate free widget</a>
-    </div>
-    <div class="price-card featured">
-      <div class="popular">Most popular</div>
-      <div class="tier">Pro</div>
-      <div class="amount">₹199<span>/month</span></div>
-      <div class="desc">For growing businesses</div>
-      <ul>
-        <li>Everything in Free</li>
-        <li>Click & conversion analytics</li>
-        <li>Multi-agent department routing</li>
-        <li>Business hours display</li>
-        <li>Animated attention-grabber</li>
-        <li>A/B test widget placements</li>
-        <li>Priority support</li>
-      </ul>
-      <button class="price-btn price-btn-primary">Start 14-day free trial</button>
-    </div>
-    <div class="price-card">
-      <div class="tier">Agency</div>
-      <div class="amount">₹499<span>/month</span></div>
-      <div class="desc">For agencies managing multiple clients</div>
-      <ul>
-        <li>Everything in Pro</li>
-        <li>Up to 50 client websites</li>
-        <li>White-label dashboard</li>
-        <li>Bulk widget management</li>
-        <li>Client analytics reports</li>
-        <li>API access</li>
-      </ul>
-      <button class="price-btn price-btn-outline">Contact sales</button>
+      <p>Both generated embed modes are free of branding. Waani help is optional and separate from the widget.</p>
     </div>
   </div>
 </section>
 
 <footer>
   <p>© 2026 WAChat. <a href="/privacy-policy.html" style="color:var(--text3);text-decoration:underline;">Privacy Policy</a></p>
-  <p>WAChat.in — Made with ❤️ in India. Built for businesses that run on WhatsApp.</p>
+  <p>WAChat is a free tool by <a href="https://getwaani.com/?utm_source=wachat&amp;utm_medium=referral&amp;utm_campaign=free_widget">Waani</a>. Not affiliated with WhatsApp or Meta.</p>
 </footer>
 
 <script>
 function toggleSwitch(el) {
   el.classList.toggle('active');
+  el.setAttribute('aria-pressed', el.classList.contains('active'));
 }
 
-let currentTab = 'hosted'; // Default to hosted
+let currentTab = 'selfhosted';
 
 function showTab(tabName, btn) {
   document.querySelectorAll('.code-tab .tab-btn').forEach(button => button.classList.remove('active'));
@@ -988,7 +833,6 @@ function escapeHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// currentTab already declared above
 function updatePreview() {
   const num = document.getElementById('waNumber').value.trim();
   const name = document.getElementById('bizName').value.trim();
@@ -1017,6 +861,10 @@ function updatePreview() {
   // Always show popup in preview so user can see changes in real-time
   document.getElementById('popupPreview').classList.remove('hidden');
 
+  const left = document.getElementById('position').value === 'left';
+  document.getElementById('previewArea').style.justifyContent = left ? 'flex-start' : 'flex-end';
+  document.getElementById('popupPreview').style.left = left ? '0' : 'auto';
+  document.getElementById('popupPreview').style.right = left ? 'auto' : '0';
   // Generate code
   generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, showBadge, autoOpen);
 }
@@ -1025,24 +873,20 @@ function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, s
   var code = '';
   var position = document.getElementById('position') ? document.getElementById('position').value : 'right';
 
-  // Hosted Script version
+  if (!/^[1-9][0-9]{6,14}$/.test(num)) {
+    window._generatedCode = '';
+    document.getElementById('codeOutput').textContent = 'Enter your WhatsApp number with country code (7–15 digits, no + or spaces).';
+    return;
+  }
+  position = position === 'left' ? 'left' : 'right';
+  // Escape for both JavaScript strings and the containing HTML script element.
+  const options = JSON.stringify({Position: position, Contact: num, SiteName: name,
+    SiteTag: tagline, WelcomeMessage: msg, WidgetColor: color, TextColor: '#ffffff',
+    Message: prefill, CtaText: cta, AutoOpen: autoOpen, ShowBadge: showBadge,
+    BrandingText: ''}).replace(/</g, '\\u003c');
   var hostedCode = '<!-- WAChat Hosted Widget -->\n'
     + '<script src="https://getwachat.vercel.app/widget.js"><\/script>\n'
-    + '<script>\n'
-    + 'var widget_options = {\n'
-    + '  Position: "' + position + '",\n'
-    + '  Contact: "' + num + '",\n'
-    + '  SiteName: "' + name + '",\n'
-    + '  SiteTag: "' + tagline + '",\n'
-    + '  WelcomeMessage: "' + msg.replace(/"/g, '\\"') + '",\n'
-    + '  WidgetColor: "' + color + '",\n'
-    + '  TextColor: "#ffffff",\n'
-    + '  Message: "' + prefill.replace(/"/g, '\\"') + '",\n'
-    + '  BrandingText: "Powered by WAChat",\n'
-    + '  BrandingUrl: "https://getwachat.vercel.app"\n'
-    + '};\n'
-    + 'whatsapp_widget(widget_options);\n'
-    + '<\/script>';
+    + '<script>whatsapp_widget(' + options + ');<\/script>';
 
   // Self-hosted inline version
   var waLink = 'https://wa.me/' + num + '?text=' + encodeURIComponent(prefill);
@@ -1050,9 +894,10 @@ function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, s
   var svgIconLg = '<svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.79 23.492l4.613-1.472A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.19-.587-5.932-1.61l-.424-.252-2.74.875.865-2.65-.278-.44A9.77 9.77 0 012.182 12c0-5.422 4.396-9.818 9.818-9.818 5.422 0 9.818 4.396 9.818 9.818 0 5.422-4.396 9.818-9.818 9.818z"/></svg>';
   var badge = showBadge ? '\n    <span style="position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#E8593C;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff">1</span>' : '';
 
+  [name, tagline, msg, cta] = [name, tagline, msg, cta].map(escapeHtml);
   var selfHostedCode = '<!-- WAChat WhatsApp Widget -->\n'
     + '<div id="wa-chat-widget" style="position:fixed;bottom:20px;' + position + ':20px;z-index:9999;font-family:-apple-system,sans-serif">\n'
-    + '  <div id="wa-popup" style="display:' + (autoOpen ? 'block' : 'none') + ';position:absolute;bottom:70px;' + position + ':0;width:320px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);overflow:hidden;animation:waSlideUp .25s ease">\n'
+    + '  <div id="wa-popup" style="display:' + (autoOpen ? 'block' : 'none') + ';position:absolute;bottom:70px;' + position + ':0;width:min(320px,calc(100vw - 40px));background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);overflow:hidden;animation:waSlideUp .25s ease">\n'
     + '    <div style="padding:18px 20px;background:' + darkColor + ';color:#fff">\n'
     + '      <div style="font-weight:600;font-size:16px">' + name + '</div>\n'
     + '      <div style="font-size:13px;opacity:.85;margin-top:2px">' + tagline + '</div>\n'
@@ -1061,15 +906,15 @@ function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, s
     + '      <div style="background:#fff;padding:10px 14px;border-radius:0 8px 8px;font-size:14px;max-width:260px;box-shadow:0 1px 2px rgba(0,0,0,.06)">' + msg + '</div>\n'
     + '    </div>\n'
     + '    <div style="padding:12px 16px;background:#fff;border-top:1px solid #eee">\n'
-    + '      <a href="' + waLink + '" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:' + color + ';color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:15px">\n'
+    + '      <a href="' + escapeHtml(waLink) + '" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:' + color + ';color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:15px">\n'
     + '        ' + svgIcon + '\n'
     + '        ' + cta + '\n'
     + '      </a>\n'
     + '    </div>\n'
     + '  </div>\n'
-    + '  <div onclick="var p=document.getElementById(\'wa-popup\');p.style.display=p.style.display===\'none\'?\'block\':\'none\'" style="width:56px;height:56px;border-radius:50%;background:' + color + ';display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .2s;position:relative" onmouseover="this.style.transform=\'scale(1.08)\'" onmouseout="this.style.transform=\'scale(1)\'">\n'
+    + '  <button type="button" aria-label="Toggle WhatsApp chat" onclick="var p=document.getElementById(\'wa-popup\');p.style.display=p.style.display===\'none\'?\'block\':\'none\'" style="width:56px;height:56px;border-radius:50%;background:' + color + ';display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .2s;position:relative" onmouseover="this.style.transform=\'scale(1.08)\'" onmouseout="this.style.transform=\'scale(1)\'">\n'
     + '    ' + svgIconLg + badge + '\n'
-    + '  </div>\n'
+    + '  </button>\n'
     + '</div>\n'
     + '<style>@keyframes waSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}</style>';
 
@@ -1089,24 +934,23 @@ function generateCode(num, name, tagline, msg, prefill, cta, color, darkColor, s
 }
 
 function copyCode(btn) {
-  navigator.clipboard.writeText(window._generatedCode || '').then(() => {
+  if (!window._generatedCode) { document.getElementById('waNumber').reportValidity(); return; }
+  if (!navigator.clipboard) { document.getElementById('copyStatus').textContent = 'Select the code above and copy it manually.'; return; }
+  navigator.clipboard.writeText(window._generatedCode).then(() => {
     btn.classList.add('copied');
     btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Copied!';
     setTimeout(() => {
       btn.classList.remove('copied');
       btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy code';
     }, 2000);
-  });
+  }).catch(() => { document.getElementById('copyStatus').textContent = 'Copy was blocked. Select the code above and copy it manually.'; });
 }
 
-// Initialize
-// updatePreview(); // Remove this line
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Set "Hosted Script (Recommended)" as the default active tab
-  const hostedTabButton = document.querySelector('.code-tab button:last-child');
-  if (hostedTabButton) {
-    showTab('hosted', hostedTabButton);
+  const defaultTabButton = document.querySelector('.code-tab button:first-child');
+  if (defaultTabButton) {
+    showTab('selfhosted', defaultTabButton);
   }
   updatePreview();
 });
