@@ -16,7 +16,7 @@
             CtaText: "Start chat",
             AutoOpen: false,
             ShowBadge: false,
-            BrandingUrl: "https://getwachat.vercel.app"
+            BrandingUrl: "https://tools.getwaani.com"
         };
 
         // Merge user options with defaults
