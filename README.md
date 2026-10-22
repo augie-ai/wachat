@@ -1,6 +1,6 @@
 # WAChat: a free tool by Waani
 
-Free, ungated WhatsApp widget generator at https://getwachat.vercel.app/.
+Free, ungated WhatsApp widget generator at https://tools.getwaani.com/.
 
 - Standalone HTML/CSS with a small inline click handler; no external script.
 - Optional hosted widget.js; a different popup layout and a WAChat hosting dependency.

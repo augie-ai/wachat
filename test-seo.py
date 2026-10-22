@@ -5,7 +5,7 @@ from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).parent
-BASE = 'https://getwachat.vercel.app'
+BASE = 'https://tools.getwaani.com'
 
 class Page(HTMLParser):
     def __init__(self, text):
